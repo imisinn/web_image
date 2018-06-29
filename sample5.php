@@ -48,8 +48,9 @@ $result_num = 0;
 
 if (isset($_POST["keyword"]) && isset($_POST["number"])) {
   if(array_key_exists($_POST["keyword"], $tf_data)){
+    $nump = mb_convert_kana($_POST["number"], "n", "utf-8");
 
-	if ($_POST["number"]==null || !preg_match("/^[0-9]+$/", $_POST["number"])) {
+	if ($_POST["number"]==null || !preg_match("/^[0-9]+$/", $nump)) {
 		echo "人数を正しく入力して下さい。";
 	} else {
     	echo "キーワード「".$_POST["keyword"]."」　人数「";
@@ -58,7 +59,7 @@ if (isset($_POST["keyword"]) && isset($_POST["number"])) {
     echo "<hr><br>\n";
 
     foreach($tf_data[@$_POST["keyword"]] as $key => $val ) {
-      if (@$_POST["number"] == @$fc_data[$key] && @$_POST["number"]<>null){
+      if ($nump == @$fc_data[$key] && $nump<>null){
 		echo "<img src='$key'><br>\n";
 		echo "キーワード出現回数＝".$val."回<br>\n";
 		echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
