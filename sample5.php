@@ -48,7 +48,7 @@ $result_num = 0;
 
 if (isset($_POST["keyword"]) && isset($_POST["number"])) {
   if(array_key_exists($_POST["keyword"], $tf_data)){
-    $nump = mb_convert_kana($_POST["number"], "n", "utf-8");
+    $nump = mb_convert_kana($_POST["number"], "n", "utf-8"); //全角数字を半角に
 
 	if ($_POST["number"]==null || !preg_match("/^[0-9]+$/", $nump)) {
 		echo "人数を正しく入力して下さい。";
@@ -60,10 +60,11 @@ if (isset($_POST["keyword"]) && isset($_POST["number"])) {
 
     foreach($tf_data[@$_POST["keyword"]] as $key => $val ) {
       if ($nump == @$fc_data[$key] && $nump<>null){
-		echo "<img src='$key'><br>\n";
-		echo "キーワード出現回数＝".$val."回<br>\n";
+		echo "<img src='set_thumb.php?url=$key&width=200'>\n";
+		/*echo "キーワード出現回数＝".$val."回<br>\n";
 		echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
-		echo "$key<br><br><br>\n";
+		echo "$key<br><br><br>\n";*/
+
 		$result_num++;
       }
     }
@@ -75,7 +76,7 @@ if (isset($_POST["keyword"]) && isset($_POST["number"])) {
   }
 }
 
-echo "検索結果は".$result_num."件でした。";
+echo "<br>検索結果は".$result_num."件でした。";
 
 ?>
 </body>
