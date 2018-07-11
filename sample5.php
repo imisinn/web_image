@@ -74,31 +74,38 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
         echo "範囲指定か、単一な人数指定かどちらかにしてください :2";
         $flag = 3;
     }else {
-    	echo "キーワード「".$_POST["keyword"]."」　人数「";
-    	echo $_POST["number"]."人」での検索結果<br>\n";
     }
     echo "<hr><br>\n";
     //echo "flag : '$flag'　<br>";
 
     if($flag != 3){//入力エラーミス出ない場合
         if($max == null && $min != null){//最大が入力されていない場合
-            echo "最大未入力<br>";
+            //echo "最大未入力<br>";
             $flag = 2;
             $max = "1000";
+            echo "キーワード「".$_POST["keyword"]."」　人数「";
+            echo $min."人以上」での検索結果<br>\n";
         }elseif ($min == null && $max != null){//最小が入力されていない場合
-            echo "最小未入力<br>";
+            //echo "最小未入力<br>";
             $flag = 2;
             $min = "0";
+            echo "キーワード「".$_POST["keyword"]."」　人数「";
+            echo $max."人以下」の検索結果<br>\n";
         }elseif ($nump != null){//単一指定の場合
-            echo "単一指定<br>";
+            //echo "単一指定<br>";
             $flag = 1;
+            echo "キーワード「".$_POST["keyword"]."」　人数「";
+            echo $nump."人」での検索結果<br>\n";
         }else{//最大、最小が入力されている場合
-            echo "範囲両方指定<br>";
+            //echo "範囲両方指定<br>";
             $flag = 2;
+            echo "キーワード「".$_POST["keyword"]."」　人数「";
+            echo $min."人以上".$max."人以下」での検索結果<br>\n";
         }
     }
 
-    echo "<br><br>単一指定 '$nump' 最小：　'$min' 最大: '$max' flag: '$flag'<br><br>";
+
+    //echo "<br><br>単一指定 '$nump' 最小：　'$min' 最大: '$max' flag: '$flag'<br><br>";
 
     if($flag != 3){
         foreach($tf_data[@$_POST["keyword"]] as $key => $val ) {
