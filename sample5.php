@@ -111,18 +111,18 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
             foreach($tf_data[$oneword] as $key => $val ) {
                 if($flag == 1){
                     if ($nump == @$fc_data[$key]){
-                      echo "<img src='$key'><br>\n";
-                      echo "キーワード出現回数＝".$val."回<br>\n";
+                      echo "<img src='set_thumb.php?url=$key&width=200'>\n";
+                      /*echo "キーワード出現回数＝".$val."回<br>\n";
                       echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
-                      echo "$key<br><br><br>\n";
+                      echo "$key<br><br><br>\n";*/
                       $result_num++;
                     }
                 }elseif ($flag == 2) {
                     if ($min <= @$fc_data[$key] && $max >= @$fc_data[$key]){
-                      echo "<img src='$key'><br>\n";
-                      echo "キーワード出現回数＝".$val."回<br>\n";
+                      echo "<img src='set_thumb.php?url=$key&width=200'>\n";
+                      /*echo "キーワード出現回数＝".$val."回<br>\n";
                       echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
-                      echo "$key<br><br><br>\n";
+                      echo "$key<br><br><br>\n";*/
                       $result_num++;
                     }
                 }
