@@ -53,6 +53,7 @@ $result_num = 0;
 $flag = 0;//flag = 1:単一指定、 2:範囲指定 3:入力エラーミス
 $keywords = preg_split("/[\s,]+/",$_POST["keyword"]);
 
+
 if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_max"]) && isset($_POST["number_min"])) {
     foreach ($keywords as $oneword) {
         if(array_key_exists($oneword, $tf_data)){
@@ -135,11 +136,14 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
         echo '検索キーワードを入力して下さい。';
       } else {
         echo '検索キーワードに合致する写真はありません。';
+
       }
     }
 }
 
+
 if($flag != 3)echo "<br><br>検索結果は".$result_num."件でした。";
+
 
 ?>
 </body>
