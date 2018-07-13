@@ -11,7 +11,7 @@
   <body>
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
    <p>
-   複数入力する場合は半角空白やコンマで区切ってください。<br>
+   複数入力する場合は空白やコンマで区切ってください。<br>
    検索キーワード：<input type="text" name="keyword" size=20/><br>
    <br>人数範囲指定か人数指定どちらかにしてください<br><br>
    写真中の人の数：<input type="text" name="number" size=20 /><br>
@@ -55,7 +55,7 @@ fclose($f2);
 // 以下、検索処理
 $result_num = 0;
 $flag = 0;//flag = 1:単一指定、 2:範囲指定 3:入力エラーミス
-$keywords = preg_split("/[\s,]+/",$_POST["keyword"]);
+$keywords = preg_split("/[\s,]+/",mb_convert_kana($_POST["keyword"], "s", "utf-8"));
 
 
 if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_max"]) && isset($_POST["number_min"])) {
