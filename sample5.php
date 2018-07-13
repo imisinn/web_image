@@ -53,13 +53,13 @@ fclose($f2);
 
 
 // 以下、検索処理
-$result_num = 0;
 $flag = 0;//flag = 1:単一指定、 2:範囲指定 3:入力エラーミス
 $keywords = preg_split("/[\s,]+/",mb_convert_kana($_POST["keyword"], "s", "utf-8"));
 
 
 if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_max"]) && isset($_POST["number_min"])) {
     foreach ($keywords as $oneword) {
+      $result_num = 0;
         if(array_key_exists($oneword, $tf_data)){
           $nump = mb_convert_kana($_POST["number"], "n", "utf-8");
           $max = mb_convert_kana($_POST["number_max"], "n", "utf-8");
@@ -144,11 +144,9 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
         echo '検索キーワードに合致する写真はありません。';
 
       }
+      if($flag != 3)echo "<br><br>検索結果は".$result_num."件でした。";
     }
 }
-
-
-if($flag != 3)echo "<br><br>検索結果は".$result_num."件でした。";
 
 
 ?>
