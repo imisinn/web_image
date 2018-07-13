@@ -78,7 +78,9 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
         }elseif ($nump != null && ($max != null || $min != null)) {
               echo "範囲指定か、単一な人数指定かどちらかにしてください :2";
               $flag = 3;
-        }else {
+        }elseif (($max != null || $min != null) && $max < $min) {
+              $flag = 3;
+              echo "範囲を正しく指定してください";
         }
         echo "<hr><br>\n";
 
