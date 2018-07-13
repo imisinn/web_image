@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>集合写真検索システム</title>
+    <!--Lightbox-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   </head>
   <body>
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
@@ -78,7 +82,7 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
         }elseif ($nump != null && ($max != null || $min != null)) {
               echo "範囲指定か、単一な人数指定かどちらかにしてください :2";
               $flag = 3;
-        }elseif (($max != null || $min != null) && $max < $min) {
+        }elseif (($max != null && $min != null) && $max < $min) {
               $flag = 3;
               echo "範囲を正しく指定してください";
         }
@@ -114,7 +118,7 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
             foreach($tf_data[$oneword] as $key => $val ) {
                 if($flag == 1){
                     if ($nump == @$fc_data[$key]){
-                      echo "<img src='set_thumb.php?url=$key&width=200'>\n";
+                      echo "<a href=$key data-lightbox='result' data-title='キーワード出現回数＝".$val."回<br>写真中の人の数＝".@$fc_data[$key]."人<br>".$key."'><img src='set_thumb.php?url=$key&width=200'></a>\n";
                       /*echo "キーワード出現回数＝".$val."回<br>\n";
                       echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
                       echo "$key<br><br><br>\n";*/
@@ -122,7 +126,7 @@ if (isset($_POST["keyword"]) && isset($_POST["number"]) && isset($_POST["number_
                     }
                 }elseif ($flag == 2) {
                     if ($min <= @$fc_data[$key] && $max >= @$fc_data[$key]){
-                      echo "<img src='set_thumb.php?url=$key&width=200'>\n";
+                      echo "<a href=$key data-lightbox='result' data-title='キーワード出現回数＝".$val."回<br>写真中の人の数＝".@$fc_data[$key]."人<br>".$key."'><img src='set_thumb.php?url=$key&width=200'></a>\n";
                       /*echo "キーワード出現回数＝".$val."回<br>\n";
                       echo "写真中の人の数＝".@$fc_data[$key]."人<br>\n";
                       echo "$key<br><br><br>\n";*/
