@@ -14,9 +14,9 @@
    複数入力する場合は空白やコンマで区切ってください。<br>
    検索キーワード：<input type="text" name="keyword" size=20/><br>
    <br>人数範囲指定か人数指定どちらかにしてください<br><br>
-   写真中の人の数：<input type="text" name="number" size=20 /><br>
-   写真中の人の最大の数：<input type="text" name="number_max" size=20 /><br>
-   写真中の人の最小の数：<input type="text" name="number_min" size=20 /><br>
+   人数指定<br>写真中の人の数：<input type="text" name="number" size=20 /><br><br>
+   人数範囲指定<br>写真中の人の最大の数：<input type="text" name="number_max" size=20 />
+   最小の数：<input type="text" name="number_min" size=20 /><br>
    <input type="submit" value="Search!" />
    </p>
 </form>
